@@ -3,9 +3,9 @@ import { Q as QueryClientProvider, u as useQuery, a as useQueryClient } from "..
 import { c as createRouter, a as createRootRouteWithContext, u as useRouter, L as Link, O as Outlet, H as HeadContent, S as Scripts, b as createFileRoute, d as useNavigate } from "../_libs/tanstack__react-router.mjs";
 import { Q as redirect, S as notFound } from "../_libs/tanstack__router-core.mjs";
 import { r as reactExports, j as jsxRuntimeExports } from "../_libs/react.mjs";
-import { s as supabase } from "./client-CP-kFJp_.mjs";
+import { s as supabase } from "./client-BHmQHd0X.mjs";
 import { T as Toaster$1, t as toast } from "../_libs/sonner.mjs";
-import { c as createServerFn, T as TSS_SERVER_FUNCTION, g as getServerFnById } from "./server-TPS-gfXU.mjs";
+import { c as createServerFn, T as TSS_SERVER_FUNCTION, g as getServerFnById } from "./server-DUgvIOtj.mjs";
 import "../_libs/seroval.mjs";
 import { X, S as SmilePlus, P as Paperclip, F as File, D as Download, a as Pause, b as Play, V as VolumeX, c as Volume2, M as Minimize, d as Maximize, e as FileText, f as FileArchive, g as FileCode } from "../_libs/lucide-react.mjs";
 import { o as objectType, s as stringType, l as literalType, b as booleanType, e as enumType } from "../_libs/zod.mjs";
@@ -33,7 +33,7 @@ import "node:async_hooks";
 import "../_libs/h3-v2.mjs";
 import "../_libs/rou3.mjs";
 import "../_libs/srvx.mjs";
-const appCss = "/assets/styles-B7VwUuxj.css";
+const appCss = "/assets/styles-Cxdy7fdB.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -524,393 +524,6 @@ function AuthenticatedLayout() {
     /* @__PURE__ */ jsxRuntimeExports.jsx("main", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) })
   ] });
 }
-const Route$9 = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Треп — соцсеть для полной ерунды" },
-      {
-        name: "description",
-        content: "Напиши мысль, о которой пожалеешь через 3 секунды. Треп — социальная сеть, где живут самые странные мысли интернета."
-      },
-      { property: "og:title", content: "Треп — соцсеть для полной ерунды" },
-      { property: "og:description", content: "Напиши мысль, о которой пожалеешь через 3 секунды." }
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@400;500;700&display=swap"
-      }
-    ]
-  }),
-  component: Index
-});
-const treps = [
-  {
-    author: "котовед_77",
-    time: "3 сек назад",
-    text: "Сейчас понял, что холодильник работает круглосуточно без выходных. Где его профсоюз?",
-    reactions: { "🤣": 482, "🧠": 91, "☕": 203, "🚑": 12, "🐟": 47 }
-  },
-  {
-    author: "академик_дивана",
-    time: "минуту назад",
-    text: "Если кот сидит на ноутбуке, считается ли это облачным хранением?",
-    reactions: { "🤣": 921, "🧠": 412, "☕": 88, "🚑": 4, "🐟": 156 }
-  },
-  {
-    author: "забыл_зачем",
-    time: "5 мин назад",
-    text: "Я зашёл на кухню и забыл зачем. Теперь живу здесь. Уже знакомлюсь с микроволновкой.",
-    reactions: { "🤣": 1247, "🧠": 88, "☕": 333, "🚑": 67, "🐟": 22 }
-  }
-];
-const reactionLabels = {
-  "🤣": "Уничтожило",
-  "🧠": "Мозг сломался",
-  "☕": "Нормальный треп",
-  "🚑": "Срочно заберите автора",
-  "🐟": "Рыба одобряет"
-};
-const levels = [
-  { lvl: 1, name: "Новичок" },
-  { lvl: 5, name: "Болтун" },
-  { lvl: 10, name: "Эксперт по ерунде" },
-  { lvl: 20, name: "Академик трепологии" },
-  { lvl: 50, name: "Легенда диванных наук" },
-  { lvl: 100, name: "Источник мирового трепа" }
-];
-function Index() {
-  const [draft, setDraft] = reactExports.useState("");
-  const [showModal, setShowModal] = reactExports.useState(false);
-  const [fishMode, setFishMode] = reactExports.useState(false);
-  const fishCount = reactExports.useRef(0);
-  const lastKey = reactExports.useRef("");
-  reactExports.useEffect(() => {
-    const onKey = (e) => {
-      const k = e.key.toLowerCase();
-      if (k === "р" || k === "ы" || k === "б" || k === "а") {
-        lastKey.current += k;
-        if (lastKey.current.endsWith("рыба")) {
-          fishCount.current += 1;
-          if (fishCount.current >= 5) {
-            setFishMode(true);
-            setTimeout(() => setFishMode(false), 4e3);
-            fishCount.current = 0;
-          }
-          lastKey.current = "";
-        }
-        if (lastKey.current.length > 10) lastKey.current = lastKey.current.slice(-4);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen bg-background text-foreground overflow-x-hidden", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "sticky top-0 z-30 border-b-2 border-ink bg-background/90 backdrop-blur", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto flex max-w-6xl items-center justify-between px-4 py-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "grid h-10 w-10 place-items-center rounded-xl border-2 border-ink bg-primary text-2xl shadow-chunky-sm", children: "🗯️" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display text-2xl font-extrabold", children: "Треп" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("nav", { className: "hidden gap-6 text-sm font-bold md:flex", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#feed", className: "hover:text-primary", children: "Лента" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#reactions", className: "hover:text-primary", children: "Реакции" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#levels", className: "hover:text-primary", children: "Уровни" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#premium", className: "hover:text-primary", children: "Треп+" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(AuthButton, {})
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "relative bg-gradient-hero", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute right-8 top-12 hidden text-6xl animate-swim md:block", children: "🐟" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute left-12 bottom-20 hidden text-5xl animate-wiggle md:block", children: "☕" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute right-1/4 bottom-10 hidden text-4xl animate-wiggle md:block", children: "🧠" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-6xl px-4 py-20 text-center md:py-28", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-6 inline-block rounded-full border-2 border-ink bg-background px-4 py-1.5 text-xs font-bold shadow-chunky-sm", children: "👑 Сегодня за интернет отвечает @случайный_васян" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "mx-auto max-w-4xl text-5xl font-extrabold leading-[0.95] md:text-7xl", children: [
-          "Напиши мысль,",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-          "о которой пожалеешь",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block -rotate-2 rounded-2xl bg-primary px-4 py-1 text-primary-foreground shadow-chunky", children: "через 3 секунды" })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mx-auto mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl", children: [
-          "Треп — социальная сеть для полной ерунды. Без алгоритмов, без смысла, без причины. Только вы, ваши странные мысли и ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "847 соучастников" }),
-          "."
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "button",
-          {
-            onClick: () => setShowModal(true),
-            className: "group mt-12 inline-flex items-center gap-3 rounded-3xl border-4 border-ink bg-gradient-button px-10 py-7 font-display text-2xl font-extrabold text-primary-foreground shadow-chunky animate-pulse-big hover:animate-none md:text-4xl",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-3xl md:text-5xl", children: "💭" }),
-              "ЛЯПНУТЬ ЧТО-НИБУДЬ"
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-sm text-muted-foreground", children: "Нажми. Потом сразу пожалей." })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "feed", className: "border-y-2 border-ink bg-secondary py-20", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-6xl px-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-12 flex flex-wrap items-end justify-between gap-4", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-sm font-bold uppercase tracking-wider text-primary", children: "Прямой эфир ерунды" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-2 text-4xl font-extrabold md:text-5xl", children: "Свежие трепы" })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-xl border-2 border-ink bg-background px-4 py-2 text-sm font-bold shadow-chunky-sm", children: "🟢 Сейчас треплют 12 847 человек" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid gap-6 md:grid-cols-3", children: treps.map((t, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "article",
-        {
-          className: "flex flex-col rounded-3xl border-2 border-ink bg-card p-6 shadow-chunky transition-transform hover:-translate-y-1",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-4 flex items-center gap-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid h-11 w-11 place-items-center rounded-full border-2 border-ink bg-accent text-lg font-bold", children: t.author[0].toUpperCase() }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "font-bold", children: [
-                  "@",
-                  t.author
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground", children: [
-                  t.time,
-                  " · 🐟 47 соучастников"
-                ] })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "flex-1 text-lg leading-snug", children: t.text }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-5 flex flex-wrap gap-2 border-t border-border pt-4", children: Object.entries(t.reactions).map(([emoji, count]) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "button",
-              {
-                title: reactionLabels[emoji],
-                className: "flex items-center gap-1.5 rounded-full border-2 border-ink bg-background px-3 py-1 text-sm font-bold shadow-chunky-sm transition-transform hover:-translate-y-0.5",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: emoji }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: count })
-                ]
-              },
-              emoji
-            )) })
-          ]
-        },
-        i
-      )) })
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "reactions", className: "py-20", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-6xl px-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-sm font-bold uppercase tracking-wider text-primary", children: "Лайки — это скучно" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-2 text-4xl font-extrabold md:text-5xl", children: "Пять честных реакций" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mx-auto mt-4 max-w-xl text-muted-foreground", children: "Никакого «нравится». Только настоящие эмоции от прочитанного." })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5", children: Object.entries(reactionLabels).map(([emoji, label], i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "group rounded-3xl border-2 border-ink bg-card p-6 text-center shadow-chunky-sm transition-all hover:-translate-y-1 hover:shadow-chunky",
-          style: { rotate: `${(i % 2 ? 1 : -1) * 1.5}deg` },
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-6xl transition-transform group-hover:scale-110", children: emoji }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 font-display font-extrabold", children: label })
-          ]
-        },
-        emoji
-      )) })
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "border-y-2 border-ink bg-muted py-20", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-6xl px-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-center text-4xl font-extrabold md:text-5xl", children: "Не как у людей" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(FeatureCard, { emoji: "👥", title: "Не подписчики", children: [
-          "У тебя не «подписчики», а ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "Свидетели" }),
-          ", ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "Очевидцы" }),
-          " и",
-          " ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "Соучастники" }),
-          ". Звучит серьёзнее, чем есть."
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(FeatureCard, { emoji: "💌", title: "Закулисный треп", children: "Личные сообщения, в которых вы шепчетесь о ерунде вдали от глаз Рыбного совета." }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(FeatureCard, { emoji: "🤖", title: "Трепобот-3000", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("em", { children: "Анализирую…" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("em", { children: "Это настолько странно, что нарушений не обнаружено." })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(FeatureCard, { emoji: "🚷", title: "Бан, но мягкий", children: "«Вы были отправлены на принудительное размышление о своём поведении.» Это даже звучит полезно." }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(FeatureCard, { emoji: "🐟", title: "Рыбный совет", children: "Тайный орган управления, который иногда одобряет. Иногда — нет. Никто не знает, по какому принципу." }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(FeatureCard, { emoji: "👑", title: "Главный Трепач Дня", children: [
-          "Каждый день случайному пользователю присваивается титул. Сегодня ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "он" }),
-          " ",
-          "отвечает за интернет. Мы сами не знаем почему."
-        ] })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "levels", className: "py-20", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-4xl px-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-sm font-bold uppercase tracking-wider text-primary", children: "Карьерная лестница" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-2 text-4xl font-extrabold md:text-5xl", children: "Путь трепача" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-12 space-y-3", children: levels.map((l, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "flex items-center gap-4 rounded-2xl border-2 border-ink bg-card p-4 shadow-chunky-sm",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid h-14 w-14 shrink-0 place-items-center rounded-xl border-2 border-ink bg-primary font-display text-xl font-extrabold text-primary-foreground", children: l.lvl }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-lg font-extrabold", children: l.name }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-1 h-2 overflow-hidden rounded-full bg-muted", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "div",
-                {
-                  className: "h-full bg-accent",
-                  style: { width: `${Math.min(100, (i + 1) * 16)}%` }
-                }
-              ) })
-            ] }),
-            l.lvl === 100 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-3xl animate-wiggle", children: "👑" })
-          ]
-        },
-        l.lvl
-      )) })
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "premium", className: "border-y-2 border-ink bg-gradient-hero py-20", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-4xl px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-3xl border-4 border-ink bg-card p-8 shadow-chunky md:p-12", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap items-center gap-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "rounded-full border-2 border-ink bg-primary px-3 py-1 text-xs font-bold text-primary-foreground", children: "PREMIUM" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-3xl animate-swim", children: "🐟" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-4 text-4xl font-extrabold md:text-6xl", children: [
-        "Треп",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-primary", children: "+" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-3 text-lg text-muted-foreground", children: "Для тех, кто треплет профессионально." }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("ul", { className: "mt-8 space-y-4 text-lg", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(PerkLine, { emoji: "🐟", children: "Золотая рыба возле ника" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(PerkLine, { emoji: "📜", children: "Трепы длиной до 5000 символов" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(PerkLine, { emoji: "✨", children: "Анимированный значок «Профессиональный болтун»" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-10 flex flex-wrap items-end justify-between gap-4", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "font-display text-5xl font-extrabold", children: [
-            "99 ₽",
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl text-muted-foreground", children: "/мес" })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "Меньше, чем кофе. Полезнее ли — спорно." })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "rounded-2xl border-2 border-ink bg-primary px-6 py-4 font-display font-extrabold text-primary-foreground shadow-chunky transition-transform hover:-translate-y-1", children: "Стать болтуном" })
-      ] })
-    ] }) }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 text-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-3xl px-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-4xl font-extrabold md:text-6xl", children: "Всё ещё читаешь?" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-lg text-muted-foreground", children: "Это знак. Иди и ляпни уже что-нибудь." }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "button",
-        {
-          onClick: () => setShowModal(true),
-          className: "mt-10 inline-flex items-center gap-3 rounded-3xl border-4 border-ink bg-gradient-button px-8 py-5 font-display text-xl font-extrabold text-primary-foreground shadow-chunky",
-          children: "💭 ЛЯПНУТЬ ЧТО-НИБУДЬ"
-        }
-      )
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("footer", { className: "border-t-2 border-ink bg-secondary py-8 text-center text-sm text-muted-foreground", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "© Треп. Все мысли случайны, совпадения — тоже. Подсказка: попробуй напечатать «рыба» 5 раз подряд 🐟" }) }),
-    showModal && /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "div",
-      {
-        className: "fixed inset-0 z-50 flex items-center justify-center bg-foreground/40 p-4",
-        onClick: () => setShowModal(false),
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "div",
-          {
-            onClick: (e) => e.stopPropagation(),
-            className: "w-full max-w-lg rounded-3xl border-4 border-ink bg-card p-6 shadow-chunky",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display text-2xl font-extrabold", children: "Новый треп" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "button",
-                  {
-                    onClick: () => setShowModal(false),
-                    className: "grid h-9 w-9 place-items-center rounded-full border-2 border-ink bg-background font-bold",
-                    children: "✕"
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "textarea",
-                {
-                  autoFocus: true,
-                  value: draft,
-                  onChange: (e) => setDraft(e.target.value.slice(0, 280)),
-                  placeholder: "Что за чушь у тебя в голове прямо сейчас?",
-                  className: "mt-4 h-40 w-full resize-none rounded-2xl border-2 border-ink bg-background p-4 text-lg outline-none focus:ring-4 focus:ring-primary/30"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-2 flex items-center justify-between text-sm text-muted-foreground", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "🤖 Трепобот-3000 уже ничего не ждёт" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-                  draft.length,
-                  "/280"
-                ] })
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "button",
-                {
-                  onClick: () => {
-                    setShowModal(false);
-                    setDraft("");
-                  },
-                  className: "mt-4 w-full rounded-2xl border-2 border-ink bg-gradient-button py-4 font-display text-lg font-extrabold text-primary-foreground shadow-chunky-sm",
-                  children: "Опубликовать и пожалеть"
-                }
-              )
-            ]
-          }
-        )
-      }
-    ),
-    fishMode && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pointer-events-none fixed inset-0 z-[60] flex flex-col items-center justify-center bg-fish/80 text-center", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[200px] animate-wiggle", children: "🐟" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-3xl font-extrabold text-primary-foreground md:text-5xl", children: "Рыбный совет доволен вами." })
-    ] })
-  ] });
-}
-function AuthButton() {
-  const { session, loading } = useAuth();
-  if (loading) return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-9 w-20 animate-pulse rounded-xl bg-muted" });
-  if (session) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Link,
-      {
-        to: "/feed",
-        className: "rounded-xl border-2 border-ink bg-primary px-4 py-2 text-sm font-bold text-primary-foreground shadow-chunky-sm hover:-translate-y-0.5 transition-transform",
-        children: "В приложение"
-      }
-    );
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Link,
-    {
-      to: "/auth",
-      className: "rounded-xl border-2 border-ink bg-accent px-4 py-2 text-sm font-bold shadow-chunky-sm hover:-translate-y-0.5 transition-transform",
-      children: "Войти"
-    }
-  );
-}
-function FeatureCard({
-  emoji,
-  title,
-  children
-}) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-3xl border-2 border-ink bg-card p-6 shadow-chunky-sm transition-transform hover:-translate-y-1", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-4xl", children: emoji }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-3 font-display text-xl font-extrabold", children: title }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-muted-foreground", children })
-  ] });
-}
-function PerkLine({ emoji, children }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-start gap-3", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-ink bg-accent text-xl", children: emoji }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "pt-1.5", children })
-  ] });
-}
 function useAvatarUrl(path) {
   const [url, setUrl] = reactExports.useState(null);
   reactExports.useEffect(() => {
@@ -943,565 +556,6 @@ function Avatar({
       children: url ? /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: url, alt: nickname ?? "", className: "h-full w-full object-cover" }) : (nickname?.[0] ?? "?").toUpperCase()
     }
   );
-}
-const Route$8 = createFileRoute("/_authenticated/search")({
-  head: () => ({ meta: [{ title: "Поиск — Треп" }] }),
-  component: SearchPage
-});
-function SearchPage() {
-  const [q, setQ] = reactExports.useState("");
-  const { data, isFetching } = useQuery({
-    queryKey: ["search-users", q],
-    enabled: q.trim().length >= 1,
-    queryFn: async () => {
-      const term = q.trim().replace(/[%_]/g, "");
-      const { data: data2 } = await supabase.from("profiles").select("id,nickname,display_name,avatar_url,bio,is_private").or(`nickname.ilike.%${term}%,display_name.ilike.%${term}%`).limit(30);
-      return data2 ?? [];
-    }
-  });
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl p-4 md:p-8", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-3xl font-extrabold md:text-4xl", children: "Поиск трепачей" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "input",
-      {
-        autoFocus: true,
-        value: q,
-        onChange: (e) => setQ(e.target.value),
-        placeholder: "Никнейм или имя…",
-        className: "mt-4 w-full rounded-xl border-2 border-ink bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-primary"
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 space-y-2", children: [
-      q.trim().length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Начни вводить никнейм." }),
-      isFetching && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Ищем…" }),
-      data?.length === 0 && q.trim().length > 0 && !isFetching && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Никого не нашли." }),
-      data?.map((u) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        Link,
-        {
-          to: "/u/$nickname",
-          params: { nickname: u.nickname },
-          className: "flex items-center gap-3 rounded-2xl border-2 border-ink bg-card p-3 shadow-chunky-sm hover:-translate-y-0.5 transition-transform",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { path: u.avatar_url, nickname: u.nickname }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "truncate font-bold", children: [
-                u.display_name ?? u.nickname,
-                " ",
-                u.is_private && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs", children: "🔒" })
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "truncate text-xs text-muted-foreground", children: [
-                "@",
-                u.nickname
-              ] }),
-              u.bio && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "truncate text-sm text-muted-foreground", children: u.bio })
-            ] })
-          ]
-        },
-        u.id
-      ))
-    ] })
-  ] });
-}
-const Route$7 = createFileRoute("/_authenticated/propose-reaction")({
-  head: () => ({ meta: [{ title: "Предложить реакцию — Треп" }] }),
-  component: ProposeReactionPage
-});
-const schema = objectType({
-  name: stringType().trim().min(2, "Минимум 2 символа").max(30).regex(/^[a-zA-Zа-яА-Я0-9_ -]+$/, "Только буквы, цифры, _ и -"),
-  description: stringType().trim().max(140).optional().or(literalType(""))
-});
-function ProposeReactionPage() {
-  const { user } = useAuth();
-  const qc = useQueryClient();
-  const [name, setName] = reactExports.useState("");
-  const [description, setDescription] = reactExports.useState("");
-  const [file, setFile] = reactExports.useState(null);
-  const [submitting, setSubmitting] = reactExports.useState(false);
-  const { data: proposals } = useQuery({
-    queryKey: ["my-proposals", user?.id],
-    queryFn: async () => {
-      const { data } = await supabase.from("reaction_proposals").select("*").eq("user_id", user.id).order("created_at", { ascending: false });
-      return data ?? [];
-    },
-    enabled: !!user
-  });
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!user) return;
-    const parsed = schema.safeParse({ name, description });
-    if (!parsed.success) {
-      toast.error(parsed.error.errors[0].message);
-      return;
-    }
-    if (!file) {
-      toast.error("Прикрепи PNG-картинку");
-      return;
-    }
-    if (file.size > 2 * 1024 * 1024) {
-      toast.error("Файл больше 2 МБ");
-      return;
-    }
-    if (!file.type.startsWith("image/")) {
-      toast.error("Только картинки");
-      return;
-    }
-    setSubmitting(true);
-    try {
-      const ext = file.name.split(".").pop()?.toLowerCase() ?? "png";
-      const path = `${user.id}/${Date.now()}.${ext}`;
-      const { error: upErr } = await supabase.storage.from("reaction-proposals").upload(path, file);
-      if (upErr) {
-        toast.error(upErr.message);
-        return;
-      }
-      const { error } = await supabase.from("reaction_proposals").insert({
-        user_id: user.id,
-        name: parsed.data.name,
-        description: parsed.data.description || null,
-        image_url: path
-      });
-      if (error) {
-        toast.error(error.message);
-        return;
-      }
-      toast.success("Заявка отправлена админу. Ждём вердикта Рыбного совета 🐟");
-      setName("");
-      setDescription("");
-      setFile(null);
-      qc.invalidateQueries({ queryKey: ["my-proposals", user.id] });
-    } finally {
-      setSubmitting(false);
-    }
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl p-4 md:p-8", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-3xl font-extrabold md:text-4xl", children: "Предложить реакцию" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-muted-foreground", children: "Загрузи PNG, придумай название — админ решит, добавлять ли в чаты." }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      "form",
-      {
-        onSubmit: handleSubmit,
-        className: "mt-6 space-y-4 rounded-3xl border-2 border-ink bg-card p-5 shadow-chunky-sm",
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "block", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mb-1 block text-sm font-bold", children: "Название реакции" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "input",
-              {
-                value: name,
-                maxLength: 30,
-                onChange: (e) => setName(e.target.value),
-                placeholder: "например: рыба_одобряет",
-                className: "w-full rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "block", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mb-1 block text-sm font-bold", children: "Описание (необязательно)" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "input",
-              {
-                value: description,
-                maxLength: 140,
-                onChange: (e) => setDescription(e.target.value),
-                placeholder: "Когда уместно её использовать",
-                className: "w-full rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "block", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mb-1 block text-sm font-bold", children: "Картинка (PNG, до 2 МБ)" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "input",
-              {
-                type: "file",
-                accept: "image/png,image/jpeg,image/webp,image/gif",
-                onChange: (e) => setFile(e.target.files?.[0] ?? null),
-                className: "block w-full rounded-xl border-2 border-ink bg-background px-3 py-2 file:mr-3 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-1.5 file:font-bold file:text-primary-foreground"
-              }
-            ),
-            file && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-1 text-xs text-muted-foreground", children: [
-              file.name,
-              " · ",
-              (file.size / 1024).toFixed(1),
-              " КБ"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              type: "submit",
-              disabled: submitting,
-              className: "w-full rounded-2xl border-2 border-ink bg-gradient-button py-3 font-display font-extrabold text-primary-foreground shadow-chunky-sm disabled:opacity-60",
-              children: submitting ? "Отправляем…" : "Отправить на модерацию"
-            }
-          )
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-12 font-display text-2xl font-extrabold", children: "Мои заявки" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 space-y-3", children: [
-      (!proposals || proposals.length === 0) && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-muted-foreground", children: [
-        "Пока ничего не предлагал.",
-        " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/", className: "text-primary underline", children: "Иди ляпни что-нибудь" }),
-        "."
-      ] }),
-      proposals?.map((p) => /* @__PURE__ */ jsxRuntimeExports.jsx(ProposalRow, { proposal: p }, p.id))
-    ] })
-  ] });
-}
-const statusLabel = {
-  pending: { text: "На модерации", cls: "bg-accent text-accent-foreground" },
-  approved: { text: "Одобрено", cls: "bg-primary text-primary-foreground" },
-  rejected: { text: "Отклонено", cls: "bg-destructive text-destructive-foreground" }
-};
-function ProposalRow({ proposal }) {
-  const [url, setUrl] = reactExports.useState(null);
-  reactExports.useEffect(() => {
-    getSignedUrl("reaction-proposals", proposal.image_url).then(setUrl);
-  }, [proposal.image_url]);
-  const s = statusLabel[proposal.status];
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-4 rounded-2xl border-2 border-ink bg-card p-3 shadow-chunky-sm", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl border-2 border-ink bg-muted", children: url ? /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: url, alt: proposal.name, className: "h-full w-full object-contain" }) : "…" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold truncate", children: proposal.name }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: new Date(proposal.created_at).toLocaleString("ru-RU") }),
-      proposal.review_note && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs italic mt-1", children: [
-        "Комментарий админа: ",
-        proposal.review_note
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "span",
-      {
-        className: `shrink-0 rounded-full border-2 border-ink px-3 py-1 text-xs font-bold ${s.cls}`,
-        children: s.text
-      }
-    )
-  ] });
-}
-const Route$6 = createFileRoute("/_authenticated/profile")({
-  head: () => ({ meta: [{ title: "Профиль — Треп" }] }),
-  component: ProfilePage
-});
-const updateSchema = objectType({
-  display_name: stringType().trim().max(60).optional().or(literalType("")),
-  bio: stringType().trim().max(280).optional().or(literalType("")),
-  birthday: stringType().optional().or(literalType("")),
-  is_private: booleanType(),
-  hide_following: booleanType(),
-  allow_dms: booleanType()
-});
-function ProfilePage() {
-  const { user } = useAuth();
-  const qc = useQueryClient();
-  const { data: profile, isLoading } = useQuery({
-    queryKey: ["profile", user?.id],
-    queryFn: async () => {
-      const { data } = await supabase.from("profiles").select("*").eq("id", user.id).maybeSingle();
-      return data;
-    },
-    enabled: !!user
-  });
-  const [form, setForm] = reactExports.useState({
-    display_name: "",
-    bio: "",
-    birthday: "",
-    is_private: false,
-    hide_following: false,
-    allow_dms: true
-  });
-  const [avatarUrl, setAvatarUrl] = reactExports.useState(null);
-  const [uploading, setUploading] = reactExports.useState(false);
-  const [saving, setSaving] = reactExports.useState(false);
-  reactExports.useEffect(() => {
-    if (profile) {
-      setForm({
-        display_name: profile.display_name ?? "",
-        bio: profile.bio ?? "",
-        birthday: profile.birthday ?? "",
-        is_private: profile.is_private,
-        hide_following: profile.hide_following,
-        allow_dms: profile.allow_dms
-      });
-      if (profile.avatar_url) {
-        getSignedUrl("avatars", profile.avatar_url).then(setAvatarUrl);
-      } else {
-        setAvatarUrl(null);
-      }
-    }
-  }, [profile]);
-  async function handleAvatarUpload(file) {
-    if (!user) return;
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error("Файл слишком большой (макс. 5 МБ)");
-      return;
-    }
-    if (!file.type.startsWith("image/")) {
-      toast.error("Только картинки");
-      return;
-    }
-    setUploading(true);
-    try {
-      const ext = file.name.split(".").pop()?.toLowerCase() ?? "png";
-      const path = `${user.id}/avatar_${Date.now()}.${ext}`;
-      const { error: upErr } = await supabase.storage.from("avatars").upload(path, file, { upsert: true });
-      if (upErr) {
-        toast.error(upErr.message);
-        return;
-      }
-      const { error: dbErr } = await supabase.from("profiles").update({ avatar_url: path }).eq("id", user.id);
-      if (dbErr) {
-        toast.error(dbErr.message);
-        return;
-      }
-      toast.success("Аватар обновлён");
-      qc.invalidateQueries({ queryKey: ["profile", user.id] });
-    } finally {
-      setUploading(false);
-    }
-  }
-  async function handleSave(e) {
-    e.preventDefault();
-    if (!user) return;
-    const parsed = updateSchema.safeParse(form);
-    if (!parsed.success) {
-      toast.error(parsed.error.errors[0].message);
-      return;
-    }
-    setSaving(true);
-    try {
-      const payload = {
-        display_name: parsed.data.display_name || null,
-        bio: parsed.data.bio || null,
-        birthday: parsed.data.birthday || null,
-        is_private: parsed.data.is_private,
-        hide_following: parsed.data.hide_following,
-        allow_dms: parsed.data.allow_dms
-      };
-      const { error } = await supabase.from("profiles").update(payload).eq("id", user.id);
-      if (error) {
-        toast.error(error.message);
-        return;
-      }
-      toast.success("Профиль сохранён");
-      qc.invalidateQueries({ queryKey: ["profile", user.id] });
-    } finally {
-      setSaving(false);
-    }
-  }
-  if (isLoading)
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-2xl p-6 text-muted-foreground", children: "Загружаем профиль…" });
-  if (!profile)
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-2xl p-6 text-destructive", children: "Профиль не найден." });
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl p-4 md:p-8", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-3xl font-extrabold md:text-4xl", children: "Мой профиль" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-1 text-muted-foreground", children: [
-      "@",
-      profile.nickname,
-      " · с ",
-      new Date(profile.created_at).toLocaleDateString("ru-RU")
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-8 flex items-center gap-5 rounded-3xl border-2 border-ink bg-card p-5 shadow-chunky-sm", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl border-2 border-ink bg-accent text-2xl font-extrabold", children: avatarUrl ? /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: avatarUrl, alt: "", className: "h-full w-full object-cover" }) : profile.nickname[0].toUpperCase() }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold", children: "Аватар" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "PNG / JPG, до 5 МБ" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "mt-2 inline-block cursor-pointer rounded-xl border-2 border-ink bg-primary px-4 py-2 text-sm font-bold text-primary-foreground shadow-chunky-sm hover:-translate-y-0.5 transition-transform", children: [
-          uploading ? "Загрузка…" : "Загрузить новый",
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "input",
-            {
-              type: "file",
-              accept: "image/*",
-              className: "hidden",
-              disabled: uploading,
-              onChange: (e) => {
-                const f = e.target.files?.[0];
-                if (f) handleAvatarUpload(f);
-              }
-            }
-          )
-        ] })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      "form",
-      {
-        onSubmit: handleSave,
-        className: "mt-6 space-y-4 rounded-3xl border-2 border-ink bg-card p-5 shadow-chunky-sm",
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "Отображаемое имя", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "input",
-            {
-              value: form.display_name,
-              maxLength: 60,
-              onChange: (e) => setForm({ ...form, display_name: e.target.value }),
-              placeholder: "Как тебя называть",
-              className: "w-full rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
-            }
-          ) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(Field, { label: "О себе", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "textarea",
-              {
-                value: form.bio,
-                maxLength: 280,
-                rows: 3,
-                onChange: (e) => setForm({ ...form, bio: e.target.value }),
-                placeholder: "Расскажи о ерунде, которой ты занимаешься",
-                className: "w-full resize-none rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-1 text-right text-xs text-muted-foreground", children: [
-              form.bio.length,
-              "/280"
-            ] })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "День рождения", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "input",
-            {
-              type: "date",
-              value: form.birthday ?? "",
-              onChange: (e) => setForm({ ...form, birthday: e.target.value }),
-              className: "w-full rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
-            }
-          ) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-2xl border-2 border-ink bg-secondary p-4", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-lg font-extrabold", children: "Приватность" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 space-y-2", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Toggle,
-                {
-                  label: "Скрыть профиль (видеть может только я)",
-                  checked: form.is_private,
-                  onChange: (v) => setForm({ ...form, is_private: v })
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Toggle,
-                {
-                  label: "Скрыть список подписок",
-                  checked: form.hide_following,
-                  onChange: (v) => setForm({ ...form, hide_following: v })
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Toggle,
-                {
-                  label: "Разрешить личные сообщения",
-                  checked: form.allow_dms,
-                  onChange: (v) => setForm({ ...form, allow_dms: v })
-                }
-              )
-            ] })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              type: "submit",
-              disabled: saving,
-              className: "w-full rounded-2xl border-2 border-ink bg-gradient-button py-3 font-display font-extrabold text-primary-foreground shadow-chunky-sm disabled:opacity-60",
-              children: saving ? "Сохраняем…" : "Сохранить"
-            }
-          )
-        ]
-      }
-    )
-  ] });
-}
-function Field({ label, children }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "block", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mb-1 block text-sm font-bold", children: label }),
-    children
-  ] });
-}
-function Toggle({
-  label,
-  checked,
-  onChange
-}) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex cursor-pointer items-center justify-between gap-3 rounded-xl bg-background px-3 py-2 border border-border", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm", children: label }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "input",
-      {
-        type: "checkbox",
-        checked,
-        onChange: (e) => onChange(e.target.checked),
-        className: "h-5 w-5 cursor-pointer"
-      }
-    )
-  ] });
-}
-const Route$5 = createFileRoute("/_authenticated/messages")({
-  head: () => ({ meta: [{ title: "Сообщения — Треп" }] }),
-  component: MessagesPage
-});
-function MessagesPage() {
-  const { user } = useAuth();
-  const { data: conversations, isLoading } = useQuery({
-    queryKey: ["conversations", user?.id],
-    enabled: !!user,
-    queryFn: async () => {
-      const { data, error } = await supabase.from("messages").select("id,content,created_at,read_at,sender_id,recipient_id").or(`sender_id.eq.${user.id},recipient_id.eq.${user.id}`).order("created_at", { ascending: false }).limit(200);
-      if (error) throw error;
-      const map = /* @__PURE__ */ new Map();
-      for (const m of data ?? []) {
-        const other = m.sender_id === user.id ? m.recipient_id : m.sender_id;
-        if (!map.has(other)) map.set(other, { other, last: m, unread: 0 });
-        const entry = map.get(other);
-        if (m.recipient_id === user.id && !m.read_at) entry.unread += 1;
-      }
-      const others = Array.from(map.values());
-      if (others.length === 0) return [];
-      const { data: profiles } = await supabase.from("profiles").select("id,nickname,display_name,avatar_url").in(
-        "id",
-        others.map((o) => o.other)
-      );
-      return others.map((o) => ({
-        ...o,
-        profile: profiles?.find((p) => p.id === o.other)
-      }));
-    }
-  });
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl p-4 md:p-8", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-3xl font-extrabold md:text-4xl", children: "💌 Сообщения" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-sm text-muted-foreground", children: "Личные диалоги. Видны только тебе и собеседнику." }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 space-y-2", children: [
-      isLoading && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Загружаем…" }),
-      !isLoading && (conversations?.length ?? 0) === 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-3xl border-2 border-dashed border-border bg-card p-8 text-center text-muted-foreground", children: [
-        "Пока никто не пишет. Найди кого-нибудь через",
-        " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/search", className: "font-bold text-primary", children: "поиск" }),
-        "."
-      ] }),
-      conversations?.map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        Link,
-        {
-          to: "/messages/$nickname",
-          params: { nickname: c.profile?.nickname ?? "" },
-          className: "flex items-center gap-3 rounded-2xl border-2 border-ink bg-card p-3 shadow-chunky-sm hover:-translate-y-0.5 transition-transform",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { path: c.profile?.avatar_url, nickname: c.profile?.nickname }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "flex items-center gap-2 truncate font-bold", children: [
-                "@",
-                c.profile?.nickname ?? "?",
-                c.unread > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground", children: c.unread })
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "truncate text-sm text-muted-foreground", children: c.last.content })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground", children: new Date(c.last.created_at).toLocaleTimeString("ru-RU", {
-              hour: "2-digit",
-              minute: "2-digit"
-            }) })
-          ]
-        },
-        c.other
-      ))
-    ] })
-  ] });
 }
 function ReportButton({
   targetType,
@@ -2149,9 +1203,11 @@ const STATIC_REACTIONS = [
   { code: "ambulance", emoji: "🚑", label: "Срочно заберите автора" },
   { code: "fish", emoji: "🐟", label: "Рыба одобряет" }
 ];
+const to = "/auth";
 function PostCard({
   post,
-  showComments = false
+  showComments = false,
+  readOnly = false
 }) {
   const { user, isAdmin } = useAuth();
   const qc = useQueryClient();
@@ -2161,6 +1217,7 @@ function PostCard({
   const nick = post.profiles?.nickname ?? "deleted";
   const display = post.profiles?.display_name ?? nick;
   const commentsCount = post.comments?.[0]?.count ?? 0;
+  const isReadOnly = readOnly || !user;
   reactExports.useEffect(() => {
     if (!pickerOpen) return;
     function onClick(e) {
@@ -2211,8 +1268,8 @@ function PostCard({
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         Link,
         {
-          to: "/u/$nickname",
-          params: { nickname: nick },
+          to: isReadOnly ? to : "/u/$nickname",
+          params: isReadOnly ? {} : { nickname: nick },
           className: "flex items-center gap-3 min-w-0",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { path: post.profiles?.avatar_url, nickname: nick }),
@@ -2230,7 +1287,7 @@ function PostCard({
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
         post.is_hidden && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "rounded-md bg-destructive/15 px-2 py-0.5 text-xs font-bold text-destructive", children: "скрыт" }),
-        (user?.id === post.author_id || isAdmin) && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        !isReadOnly && (user?.id === post.author_id || isAdmin) && /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
             onClick: deletePost,
@@ -2238,7 +1295,7 @@ function PostCard({
             children: "Удалить"
           }
         ),
-        isAdmin && !post.is_hidden && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        !isReadOnly && isAdmin && !post.is_hidden && /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
             onClick: adminHide,
@@ -2248,11 +1305,11 @@ function PostCard({
         )
       ] })
     ] }),
-    post.content && /* @__PURE__ */ jsxRuntimeExports.jsx(
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
       Link,
       {
-        to: "/post/$id",
-        params: { id: post.id },
+        to: isReadOnly ? to : "/post/$id",
+        params: isReadOnly ? {} : { id: post.id },
         className: "mt-3 block whitespace-pre-wrap text-base leading-snug hover:opacity-90",
         children: post.content
       }
@@ -2282,6 +1339,27 @@ function PostCard({
             );
             const chat = findChat(code);
             const stat = findStatic(code);
+            if (isReadOnly) {
+              return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "span",
+                {
+                  className: "flex items-center gap-1 rounded-full border-2 border-ink px-2.5 py-1 text-sm font-bold shadow-chunky-sm bg-background",
+                  title: chat?.name ?? stat?.label ?? code,
+                  children: [
+                    chat ? chat.imageSignedUrl ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      "img",
+                      {
+                        src: chat.imageSignedUrl,
+                        alt: chat.name,
+                        className: "h-4 w-4 object-contain"
+                      }
+                    ) : /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: chat.emoji_fallback ?? "⭐" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: stat?.emoji ?? "❓" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: counts.get(code) })
+                  ]
+                },
+                code
+              );
+            }
             return /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
@@ -2304,7 +1382,7 @@ function PostCard({
             );
           });
         })(),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", ref: pickerRef, children: [
+        !isReadOnly && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", ref: pickerRef, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
@@ -2368,8 +1446,7 @@ function PostCard({
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           Link,
           {
-            to: "/post/$id",
-            params: { id: post.id },
+            ...isReadOnly ? { to: "/auth", params: {} } : { to: "/post/$id", params: { id: post.id } },
             className: "text-sm font-bold text-muted-foreground hover:text-primary",
             children: [
               "💬 ",
@@ -2377,10 +1454,18 @@ function PostCard({
             ]
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(ReportButton, { targetType: "post", targetId: post.id, label: "" })
+        !isReadOnly && /* @__PURE__ */ jsxRuntimeExports.jsx(ReportButton, { targetType: "post", targetId: post.id, label: "" })
       ] })
     ] }),
-    showComments === false && commentsCount > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
+    isReadOnly && showComments === false && commentsCount > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Link,
+      {
+        to: "/auth",
+        className: "mt-2 inline-block text-xs font-bold text-primary hover:underline",
+        children: "Войдите, чтобы посмотреть комментарии →"
+      }
+    ),
+    !isReadOnly && showComments === false && commentsCount > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
       Link,
       {
         to: "/post/$id",
@@ -2389,6 +1474,701 @@ function PostCard({
         children: "Посмотреть комментарии →"
       }
     )
+  ] });
+}
+const Route$9 = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Треп — соцсеть для полной ерунды" },
+      {
+        name: "description",
+        content: "Напиши мысль, о которой пожалеешь через 3 секунды. Треп — социальная сеть, где живут самые странные мысли интернета."
+      },
+      { property: "og:title", content: "Треп — соцсеть для полной ерунды" },
+      { property: "og:description", content: "Напиши мысль, о которой пожалеешь через 3 секунды." }
+    ]
+  }),
+  component: Index
+});
+function Index() {
+  const { user, loading } = useAuth();
+  const { data: posts, isLoading } = useQuery({
+    queryKey: ["public-feed"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("posts").select(
+        "*, profiles!posts_author_profile_fkey(nickname,display_name,avatar_url), post_reactions(reaction,user_id), comments(count), post_attachments(*)"
+      ).is("is_hidden", false).order("created_at", { ascending: false }).limit(50);
+      if (error) throw error;
+      return data ?? [];
+    }
+  });
+  const nav = (label, guestTo, authTo) => {
+    const to2 = user ? authTo : guestTo;
+    const params = to2 === "/auth" ? {} : {};
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Link,
+      {
+        to: to2,
+        params,
+        className: "hover:text-primary",
+        activeProps: { className: "text-primary" },
+        children: label
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen bg-background text-foreground", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "sticky top-0 z-30 border-b-2 border-ink bg-background/90 backdrop-blur", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto flex max-w-6xl items-center justify-between px-4 py-3", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Link, { to: user ? "/feed" : "/", className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "grid h-10 w-10 place-items-center rounded-xl border-2 border-ink bg-primary text-2xl shadow-chunky-sm", children: "🗯️" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display text-2xl font-extrabold", children: "Треп" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("nav", { className: "hidden gap-6 text-sm font-bold md:flex", children: [
+        nav("Лента", "/", "/feed"),
+        nav("Поиск", "/auth", "/search"),
+        nav("Сообщения", "/auth", "/messages"),
+        nav("Реакция", "/auth", "/propose-reaction")
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(AuthButton, {})
+    ] }) }),
+    !user && !loading && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-2xl px-4 pb-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-3xl border-2 border-dashed border-primary/40 bg-card p-6 text-center shadow-chunky-sm", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-lg font-extrabold", children: "🔥 Хочешь ставить реакции, писать трепы и комментировать?" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-sm text-muted-foreground", children: "Зарегистрируйся за минуту и присоединяйся к сообществу." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 flex justify-center gap-3", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Link,
+          {
+            to: "/auth",
+            className: "rounded-xl border-2 border-ink bg-primary px-6 py-2.5 font-bold text-primary-foreground shadow-chunky-sm transition hover:-translate-y-0.5",
+            children: "Зарегистрироваться"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Link,
+          {
+            to: "/auth",
+            className: "rounded-xl border-2 border-ink bg-accent px-6 py-2.5 font-bold shadow-chunky-sm transition hover:-translate-y-0.5",
+            children: "Войти"
+          }
+        )
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl px-4 pb-16", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-6 flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "h-3 w-3 rounded-full bg-green-500 animate-pulse" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-bold text-muted-foreground", children: "Свежие трепы — читай и угарай" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3", children: [
+        isLoading && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-3", children: Array.from({ length: 5 }).map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "div",
+          {
+            className: "animate-pulse rounded-3xl border-2 border-ink bg-card p-4 shadow-chunky-sm",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-10 w-10 rounded-full bg-muted" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 space-y-2", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-4 w-32 rounded bg-muted" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-3 w-20 rounded bg-muted" })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 space-y-2", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-4 w-full rounded bg-muted" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-4 w-3/4 rounded bg-muted" })
+              ] })
+            ]
+          },
+          i
+        )) }),
+        !isLoading && (posts?.length ?? 0) === 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-3xl border-2 border-dashed border-border bg-card p-8 text-center text-muted-foreground", children: [
+          "Пока никто ничего не ляпнул. Будь первым —",
+          " ",
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/auth", className: "font-bold text-primary underline", children: "зарегистрируйся" }),
+          "!"
+        ] }),
+        posts?.map((p) => /* @__PURE__ */ jsxRuntimeExports.jsx(PostCard, { post: p, readOnly: true }, p.id))
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("footer", { className: "border-t-2 border-ink bg-secondary py-8 text-center text-sm text-muted-foreground", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "© Треп. Все мысли случайны, совпадения — тоже. Подсказка: попробуй напечатать «рыба» 5 раз подряд 🐟" }) })
+  ] });
+}
+function AuthButton() {
+  const { session, loading } = useAuth();
+  if (loading) return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-9 w-20 animate-pulse rounded-xl bg-muted" });
+  if (session) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Link,
+      {
+        to: "/feed",
+        className: "rounded-xl border-2 border-ink bg-primary px-4 py-2 text-sm font-bold text-primary-foreground shadow-chunky-sm hover:-translate-y-0.5 transition-transform",
+        children: "В приложение"
+      }
+    );
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Link,
+    {
+      to: "/auth",
+      className: "rounded-xl border-2 border-ink bg-primary px-4 py-2 text-sm font-bold text-primary-foreground shadow-chunky-sm hover:-translate-y-0.5 transition-transform",
+      children: "Войти"
+    }
+  );
+}
+const Route$8 = createFileRoute("/_authenticated/search")({
+  head: () => ({ meta: [{ title: "Поиск — Треп" }] }),
+  component: SearchPage
+});
+function SearchPage() {
+  const [q, setQ] = reactExports.useState("");
+  const { data, isFetching } = useQuery({
+    queryKey: ["search-users", q],
+    enabled: q.trim().length >= 1,
+    queryFn: async () => {
+      const term = q.trim().replace(/[%_]/g, "");
+      const { data: data2 } = await supabase.from("profiles").select("id,nickname,display_name,avatar_url,bio,is_private").or(`nickname.ilike.%${term}%,display_name.ilike.%${term}%`).limit(30);
+      return data2 ?? [];
+    }
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl p-4 md:p-8", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-3xl font-extrabold md:text-4xl", children: "Поиск трепачей" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "input",
+      {
+        autoFocus: true,
+        value: q,
+        onChange: (e) => setQ(e.target.value),
+        placeholder: "Никнейм или имя…",
+        className: "mt-4 w-full rounded-xl border-2 border-ink bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-primary"
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 space-y-2", children: [
+      q.trim().length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Начни вводить никнейм." }),
+      isFetching && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Ищем…" }),
+      data?.length === 0 && q.trim().length > 0 && !isFetching && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Никого не нашли." }),
+      data?.map((u) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        Link,
+        {
+          to: "/u/$nickname",
+          params: { nickname: u.nickname },
+          className: "flex items-center gap-3 rounded-2xl border-2 border-ink bg-card p-3 shadow-chunky-sm hover:-translate-y-0.5 transition-transform",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { path: u.avatar_url, nickname: u.nickname }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "truncate font-bold", children: [
+                u.display_name ?? u.nickname,
+                " ",
+                u.is_private && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs", children: "🔒" })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "truncate text-xs text-muted-foreground", children: [
+                "@",
+                u.nickname
+              ] }),
+              u.bio && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "truncate text-sm text-muted-foreground", children: u.bio })
+            ] })
+          ]
+        },
+        u.id
+      ))
+    ] })
+  ] });
+}
+const Route$7 = createFileRoute("/_authenticated/propose-reaction")({
+  head: () => ({ meta: [{ title: "Предложить реакцию — Треп" }] }),
+  component: ProposeReactionPage
+});
+const schema = objectType({
+  name: stringType().trim().min(2, "Минимум 2 символа").max(30).regex(/^[a-zA-Zа-яА-Я0-9_ -]+$/, "Только буквы, цифры, _ и -"),
+  description: stringType().trim().max(140).optional().or(literalType(""))
+});
+function ProposeReactionPage() {
+  const { user } = useAuth();
+  const qc = useQueryClient();
+  const [name, setName] = reactExports.useState("");
+  const [description, setDescription] = reactExports.useState("");
+  const [file, setFile] = reactExports.useState(null);
+  const [submitting, setSubmitting] = reactExports.useState(false);
+  const { data: proposals } = useQuery({
+    queryKey: ["my-proposals", user?.id],
+    queryFn: async () => {
+      const { data } = await supabase.from("reaction_proposals").select("*").eq("user_id", user.id).order("created_at", { ascending: false });
+      return data ?? [];
+    },
+    enabled: !!user
+  });
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!user) return;
+    const parsed = schema.safeParse({ name, description });
+    if (!parsed.success) {
+      toast.error(parsed.error.errors[0].message);
+      return;
+    }
+    if (!file) {
+      toast.error("Прикрепи PNG-картинку");
+      return;
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      toast.error("Файл больше 2 МБ");
+      return;
+    }
+    if (!file.type.startsWith("image/")) {
+      toast.error("Только картинки");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const ext = file.name.split(".").pop()?.toLowerCase() ?? "png";
+      const path = `${user.id}/${Date.now()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from("reaction-proposals").upload(path, file);
+      if (upErr) {
+        toast.error(upErr.message);
+        return;
+      }
+      const { error } = await supabase.from("reaction_proposals").insert({
+        user_id: user.id,
+        name: parsed.data.name,
+        description: parsed.data.description || null,
+        image_url: path
+      });
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
+      toast.success("Заявка отправлена админу. Ждём вердикта Рыбного совета 🐟");
+      setName("");
+      setDescription("");
+      setFile(null);
+      qc.invalidateQueries({ queryKey: ["my-proposals", user.id] });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl p-4 md:p-8", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-3xl font-extrabold md:text-4xl", children: "Предложить реакцию" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-muted-foreground", children: "Загрузи PNG, придумай название — админ решит, добавлять ли в чаты." }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "form",
+      {
+        onSubmit: handleSubmit,
+        className: "mt-6 space-y-4 rounded-3xl border-2 border-ink bg-card p-5 shadow-chunky-sm",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "block", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mb-1 block text-sm font-bold", children: "Название реакции" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "input",
+              {
+                value: name,
+                maxLength: 30,
+                onChange: (e) => setName(e.target.value),
+                placeholder: "например: рыба_одобряет",
+                className: "w-full rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "block", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mb-1 block text-sm font-bold", children: "Описание (необязательно)" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "input",
+              {
+                value: description,
+                maxLength: 140,
+                onChange: (e) => setDescription(e.target.value),
+                placeholder: "Когда уместно её использовать",
+                className: "w-full rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "block", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mb-1 block text-sm font-bold", children: "Картинка (PNG, до 2 МБ)" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "input",
+              {
+                type: "file",
+                accept: "image/png,image/jpeg,image/webp,image/gif",
+                onChange: (e) => setFile(e.target.files?.[0] ?? null),
+                className: "block w-full rounded-xl border-2 border-ink bg-background px-3 py-2 file:mr-3 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-1.5 file:font-bold file:text-primary-foreground"
+              }
+            ),
+            file && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-1 text-xs text-muted-foreground", children: [
+              file.name,
+              " · ",
+              (file.size / 1024).toFixed(1),
+              " КБ"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              type: "submit",
+              disabled: submitting,
+              className: "w-full rounded-2xl border-2 border-ink bg-gradient-button py-3 font-display font-extrabold text-primary-foreground shadow-chunky-sm disabled:opacity-60",
+              children: submitting ? "Отправляем…" : "Отправить на модерацию"
+            }
+          )
+        ]
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-12 font-display text-2xl font-extrabold", children: "Мои заявки" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 space-y-3", children: [
+      (!proposals || proposals.length === 0) && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-muted-foreground", children: [
+        "Пока ничего не предлагал.",
+        " ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/", className: "text-primary underline", children: "Иди ляпни что-нибудь" }),
+        "."
+      ] }),
+      proposals?.map((p) => /* @__PURE__ */ jsxRuntimeExports.jsx(ProposalRow, { proposal: p }, p.id))
+    ] })
+  ] });
+}
+const statusLabel = {
+  pending: { text: "На модерации", cls: "bg-accent text-accent-foreground" },
+  approved: { text: "Одобрено", cls: "bg-primary text-primary-foreground" },
+  rejected: { text: "Отклонено", cls: "bg-destructive text-destructive-foreground" }
+};
+function ProposalRow({ proposal }) {
+  const [url, setUrl] = reactExports.useState(null);
+  reactExports.useEffect(() => {
+    getSignedUrl("reaction-proposals", proposal.image_url).then(setUrl);
+  }, [proposal.image_url]);
+  const s = statusLabel[proposal.status];
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-4 rounded-2xl border-2 border-ink bg-card p-3 shadow-chunky-sm", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl border-2 border-ink bg-muted", children: url ? /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: url, alt: proposal.name, className: "h-full w-full object-contain" }) : "…" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold truncate", children: proposal.name }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: new Date(proposal.created_at).toLocaleString("ru-RU") }),
+      proposal.review_note && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs italic mt-1", children: [
+        "Комментарий админа: ",
+        proposal.review_note
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "span",
+      {
+        className: `shrink-0 rounded-full border-2 border-ink px-3 py-1 text-xs font-bold ${s.cls}`,
+        children: s.text
+      }
+    )
+  ] });
+}
+const Route$6 = createFileRoute("/_authenticated/profile")({
+  head: () => ({ meta: [{ title: "Профиль — Треп" }] }),
+  component: ProfilePage
+});
+const updateSchema = objectType({
+  display_name: stringType().trim().max(60).optional().or(literalType("")),
+  bio: stringType().trim().max(280).optional().or(literalType("")),
+  birthday: stringType().optional().or(literalType("")),
+  is_private: booleanType(),
+  hide_following: booleanType(),
+  allow_dms: booleanType()
+});
+function ProfilePage() {
+  const { user } = useAuth();
+  const qc = useQueryClient();
+  const { data: profile, isLoading } = useQuery({
+    queryKey: ["profile", user?.id],
+    queryFn: async () => {
+      const { data } = await supabase.from("profiles").select("*").eq("id", user.id).maybeSingle();
+      return data;
+    },
+    enabled: !!user
+  });
+  const [form, setForm] = reactExports.useState({
+    display_name: "",
+    bio: "",
+    birthday: "",
+    is_private: false,
+    hide_following: false,
+    allow_dms: true
+  });
+  const [avatarUrl, setAvatarUrl] = reactExports.useState(null);
+  const [uploading, setUploading] = reactExports.useState(false);
+  const [saving, setSaving] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    if (profile) {
+      setForm({
+        display_name: profile.display_name ?? "",
+        bio: profile.bio ?? "",
+        birthday: profile.birthday ?? "",
+        is_private: profile.is_private,
+        hide_following: profile.hide_following,
+        allow_dms: profile.allow_dms
+      });
+      if (profile.avatar_url) {
+        getSignedUrl("avatars", profile.avatar_url).then(setAvatarUrl);
+      } else {
+        setAvatarUrl(null);
+      }
+    }
+  }, [profile]);
+  async function handleAvatarUpload(file) {
+    if (!user) return;
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Файл слишком большой (макс. 5 МБ)");
+      return;
+    }
+    if (!file.type.startsWith("image/")) {
+      toast.error("Только картинки");
+      return;
+    }
+    setUploading(true);
+    try {
+      const ext = file.name.split(".").pop()?.toLowerCase() ?? "png";
+      const path = `${user.id}/avatar_${Date.now()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from("avatars").upload(path, file, { upsert: true });
+      if (upErr) {
+        toast.error(upErr.message);
+        return;
+      }
+      const { error: dbErr } = await supabase.from("profiles").update({ avatar_url: path }).eq("id", user.id);
+      if (dbErr) {
+        toast.error(dbErr.message);
+        return;
+      }
+      toast.success("Аватар обновлён");
+      qc.invalidateQueries({ queryKey: ["profile", user.id] });
+    } finally {
+      setUploading(false);
+    }
+  }
+  async function handleSave(e) {
+    e.preventDefault();
+    if (!user) return;
+    const parsed = updateSchema.safeParse(form);
+    if (!parsed.success) {
+      toast.error(parsed.error.errors[0].message);
+      return;
+    }
+    setSaving(true);
+    try {
+      const payload = {
+        display_name: parsed.data.display_name || null,
+        bio: parsed.data.bio || null,
+        birthday: parsed.data.birthday || null,
+        is_private: parsed.data.is_private,
+        hide_following: parsed.data.hide_following,
+        allow_dms: parsed.data.allow_dms
+      };
+      const { error } = await supabase.from("profiles").update(payload).eq("id", user.id);
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
+      toast.success("Профиль сохранён");
+      qc.invalidateQueries({ queryKey: ["profile", user.id] });
+    } finally {
+      setSaving(false);
+    }
+  }
+  if (isLoading)
+    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-2xl p-6 text-muted-foreground", children: "Загружаем профиль…" });
+  if (!profile)
+    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-2xl p-6 text-destructive", children: "Профиль не найден." });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl p-4 md:p-8", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-3xl font-extrabold md:text-4xl", children: "Мой профиль" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-1 text-muted-foreground", children: [
+      "@",
+      profile.nickname,
+      " · с ",
+      new Date(profile.created_at).toLocaleDateString("ru-RU")
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-8 flex items-center gap-5 rounded-3xl border-2 border-ink bg-card p-5 shadow-chunky-sm", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl border-2 border-ink bg-accent text-2xl font-extrabold", children: avatarUrl ? /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: avatarUrl, alt: "", className: "h-full w-full object-cover" }) : profile.nickname[0].toUpperCase() }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold", children: "Аватар" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "PNG / JPG, до 5 МБ" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "mt-2 inline-block cursor-pointer rounded-xl border-2 border-ink bg-primary px-4 py-2 text-sm font-bold text-primary-foreground shadow-chunky-sm hover:-translate-y-0.5 transition-transform", children: [
+          uploading ? "Загрузка…" : "Загрузить новый",
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "input",
+            {
+              type: "file",
+              accept: "image/*",
+              className: "hidden",
+              disabled: uploading,
+              onChange: (e) => {
+                const f = e.target.files?.[0];
+                if (f) handleAvatarUpload(f);
+              }
+            }
+          )
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "form",
+      {
+        onSubmit: handleSave,
+        className: "mt-6 space-y-4 rounded-3xl border-2 border-ink bg-card p-5 shadow-chunky-sm",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "Отображаемое имя", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "input",
+            {
+              value: form.display_name,
+              maxLength: 60,
+              onChange: (e) => setForm({ ...form, display_name: e.target.value }),
+              placeholder: "Как тебя называть",
+              className: "w-full rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
+            }
+          ) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Field, { label: "О себе", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "textarea",
+              {
+                value: form.bio,
+                maxLength: 280,
+                rows: 3,
+                onChange: (e) => setForm({ ...form, bio: e.target.value }),
+                placeholder: "Расскажи о ерунде, которой ты занимаешься",
+                className: "w-full resize-none rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-1 text-right text-xs text-muted-foreground", children: [
+              form.bio.length,
+              "/280"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "День рождения", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "input",
+            {
+              type: "date",
+              value: form.birthday ?? "",
+              onChange: (e) => setForm({ ...form, birthday: e.target.value }),
+              className: "w-full rounded-xl border-2 border-ink bg-background px-4 py-2.5 outline-none focus:ring-4 focus:ring-primary/30"
+            }
+          ) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-2xl border-2 border-ink bg-secondary p-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-lg font-extrabold", children: "Приватность" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 space-y-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                Toggle,
+                {
+                  label: "Скрыть профиль (видеть может только я)",
+                  checked: form.is_private,
+                  onChange: (v) => setForm({ ...form, is_private: v })
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                Toggle,
+                {
+                  label: "Скрыть список подписок",
+                  checked: form.hide_following,
+                  onChange: (v) => setForm({ ...form, hide_following: v })
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                Toggle,
+                {
+                  label: "Разрешить личные сообщения",
+                  checked: form.allow_dms,
+                  onChange: (v) => setForm({ ...form, allow_dms: v })
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              type: "submit",
+              disabled: saving,
+              className: "w-full rounded-2xl border-2 border-ink bg-gradient-button py-3 font-display font-extrabold text-primary-foreground shadow-chunky-sm disabled:opacity-60",
+              children: saving ? "Сохраняем…" : "Сохранить"
+            }
+          )
+        ]
+      }
+    )
+  ] });
+}
+function Field({ label, children }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "block", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mb-1 block text-sm font-bold", children: label }),
+    children
+  ] });
+}
+function Toggle({
+  label,
+  checked,
+  onChange
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex cursor-pointer items-center justify-between gap-3 rounded-xl bg-background px-3 py-2 border border-border", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm", children: label }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "input",
+      {
+        type: "checkbox",
+        checked,
+        onChange: (e) => onChange(e.target.checked),
+        className: "h-5 w-5 cursor-pointer"
+      }
+    )
+  ] });
+}
+const Route$5 = createFileRoute("/_authenticated/messages")({
+  head: () => ({ meta: [{ title: "Сообщения — Треп" }] }),
+  component: MessagesPage
+});
+function MessagesPage() {
+  const { user } = useAuth();
+  const { data: conversations, isLoading } = useQuery({
+    queryKey: ["conversations", user?.id],
+    enabled: !!user,
+    queryFn: async () => {
+      const { data, error } = await supabase.from("messages").select("id,content,created_at,read_at,sender_id,recipient_id").or(`sender_id.eq.${user.id},recipient_id.eq.${user.id}`).order("created_at", { ascending: false }).limit(200);
+      if (error) throw error;
+      const map = /* @__PURE__ */ new Map();
+      for (const m of data ?? []) {
+        const other = m.sender_id === user.id ? m.recipient_id : m.sender_id;
+        if (!map.has(other)) map.set(other, { other, last: m, unread: 0 });
+        const entry = map.get(other);
+        if (m.recipient_id === user.id && !m.read_at) entry.unread += 1;
+      }
+      const others = Array.from(map.values());
+      if (others.length === 0) return [];
+      const { data: profiles } = await supabase.from("profiles").select("id,nickname,display_name,avatar_url").in(
+        "id",
+        others.map((o) => o.other)
+      );
+      return others.map((o) => ({
+        ...o,
+        profile: profiles?.find((p) => p.id === o.other)
+      }));
+    }
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl p-4 md:p-8", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "font-display text-3xl font-extrabold md:text-4xl", children: "💌 Сообщения" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-sm text-muted-foreground", children: "Личные диалоги. Видны только тебе и собеседнику." }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 space-y-2", children: [
+      isLoading && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Загружаем…" }),
+      !isLoading && (conversations?.length ?? 0) === 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-3xl border-2 border-dashed border-border bg-card p-8 text-center text-muted-foreground", children: [
+        "Пока никто не пишет. Найди кого-нибудь через",
+        " ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/search", className: "font-bold text-primary", children: "поиск" }),
+        "."
+      ] }),
+      conversations?.map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        Link,
+        {
+          to: "/messages/$nickname",
+          params: { nickname: c.profile?.nickname ?? "" },
+          className: "flex items-center gap-3 rounded-2xl border-2 border-ink bg-card p-3 shadow-chunky-sm hover:-translate-y-0.5 transition-transform",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { path: c.profile?.avatar_url, nickname: c.profile?.nickname }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "flex items-center gap-2 truncate font-bold", children: [
+                "@",
+                c.profile?.nickname ?? "?",
+                c.unread > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground", children: c.unread })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "truncate text-sm text-muted-foreground", children: c.last.content })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground", children: new Date(c.last.created_at).toLocaleTimeString("ru-RU", {
+              hour: "2-digit",
+              minute: "2-digit"
+            }) })
+          ]
+        },
+        c.other
+      ))
+    ] })
   ] });
 }
 function AttachmentUpload({

@@ -54,7 +54,7 @@ function renderErrorPage() {
 let serverEntryPromise;
 async function getServerEntry() {
   if (!serverEntryPromise) {
-    serverEntryPromise = import("./server-TPS-gfXU.mjs").then((n) => n.s).then(
+    serverEntryPromise = import("./server-DUgvIOtj.mjs").then((n) => n.s).then(
       (m) => m.default ?? m
     );
   }
@@ -87,7 +87,7 @@ function applySecurityHeaders(response) {
         "Content-Security-Policy",
         [
           "default-src 'self'",
-          `script-src 'self' 'nonce-${nonce}'`,
+          `script-src 'self' 'unsafe-inline' 'nonce-${nonce}'`,
           "style-src 'self' 'unsafe-inline'",
           "img-src 'self' data: blob: https:",
           "font-src 'self' data:",
