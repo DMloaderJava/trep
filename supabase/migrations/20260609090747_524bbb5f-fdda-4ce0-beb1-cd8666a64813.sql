@@ -1,0 +1,2 @@
+ALTER TABLE public.post_reactions DROP CONSTRAINT IF EXISTS post_reactions_reaction_check;
+ALTER TABLE public.post_reactions ADD CONSTRAINT post_reactions_reaction_check CHECK (char_length(reaction) BETWEEN 1 AND 64);
