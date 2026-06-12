@@ -79,13 +79,14 @@ function applySecurityHeaders(response: Response): Response {
         ].join("; "),
       );
     } else {
-      // Production mode: strict CSP with nonce for inline scripts
-      // Scripts loaded from the bundle are 'self', inline scripts need nonce
+      // Production mode: relaxed CSP – 'unsafe-inline' is required for TanStack Start SSR bundle
+      // which generates inline scripts without nonce support baked into the template.
+      // Using 'strict-dynamic' would be ideal but requires nonce infrastructure in SSR template.
       headers.set(
         "Content-Security-Policy",
         [
           "default-src 'self'",
-          `script-src 'self' 'nonce-${nonce}'`,
+          `script-src 'self' 'unsafe-inline' 'nonce-${nonce}'`,
           "style-src 'self' 'unsafe-inline'",
           "img-src 'self' data: blob: https:",
           "font-src 'self' data:",

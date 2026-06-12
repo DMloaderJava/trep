@@ -39,12 +39,16 @@ export type PostRow = {
   }[];
 };
 
+const to = "/auth" as const;
+
 export function PostCard({
   post,
   showComments = false,
+  readOnly = false,
 }: {
   post: PostRow;
   showComments?: boolean;
+  readOnly?: boolean;
 }) {
   const { user, isAdmin } = useAuth();
   const qc = useQueryClient();
@@ -54,6 +58,8 @@ export function PostCard({
   const nick = post.profiles?.nickname ?? "deleted";
   const display = post.profiles?.display_name ?? nick;
   const commentsCount = post.comments?.[0]?.count ?? 0;
+
+  const isReadOnly = readOnly || !user;
 
   useEffect(() => {
     if (!pickerOpen) return;
@@ -117,8 +123,8 @@ export function PostCard({
     <article className="rounded-3xl border-2 border-ink bg-card p-4 shadow-chunky-sm">
       <header className="flex items-center justify-between gap-3">
         <Link
-          to="/u/$nickname"
-          params={{ nickname: nick }}
+          to={isReadOnly ? to : "/u/$nickname"}
+          params={isReadOnly ? {} : { nickname: nick }}
           className="flex items-center gap-3 min-w-0"
         >
           <Avatar path={post.profiles?.avatar_url} nickname={nick} />
@@ -135,7 +141,7 @@ export function PostCard({
               скрыт
             </span>
           )}
-          {(user?.id === post.author_id || isAdmin) && (
+          {!isReadOnly && (user?.id === post.author_id || isAdmin) && (
             <button
               onClick={deletePost}
               className="text-xs font-bold text-muted-foreground hover:text-destructive"
@@ -143,7 +149,7 @@ export function PostCard({
               Удалить
             </button>
           )}
-          {isAdmin && !post.is_hidden && (
+          {!isReadOnly && isAdmin && !post.is_hidden && (
             <button
               onClick={adminHide}
               className="text-xs font-bold text-muted-foreground hover:text-destructive"
@@ -154,15 +160,13 @@ export function PostCard({
         </div>
       </header>
 
-      {post.content && (
-        <Link
-          to="/post/$id"
-          params={{ id: post.id }}
-          className="mt-3 block whitespace-pre-wrap text-base leading-snug hover:opacity-90"
-        >
-          {post.content}
-        </Link>
-      )}
+      <Link
+        to={isReadOnly ? to : "/post/$id"}
+        params={isReadOnly ? {} : { id: post.id }}
+        className="mt-3 block whitespace-pre-wrap text-base leading-snug hover:opacity-90"
+      >
+        {post.content}
+      </Link>
 
       {/* Post Attachments */}
       {post.post_attachments && post.post_attachments.length > 0 && (
@@ -194,6 +198,31 @@ export function PostCard({
               );
               const chat = findChat(code);
               const stat = findStatic(code);
+              // Read-only: non-interactive pill display
+              if (isReadOnly) {
+                return (
+                  <span
+                    key={code}
+                    className="flex items-center gap-1 rounded-full border-2 border-ink px-2.5 py-1 text-sm font-bold shadow-chunky-sm bg-background"
+                    title={chat?.name ?? stat?.label ?? code}
+                  >
+                    {chat ? (
+                      chat.imageSignedUrl ? (
+                        <img
+                          src={chat.imageSignedUrl}
+                          alt={chat.name}
+                          className="h-4 w-4 object-contain"
+                        />
+                      ) : (
+                        <span>{chat.emoji_fallback ?? "⭐"}</span>
+                      )
+                    ) : (
+                      <span>{stat?.emoji ?? "❓"}</span>
+                    )}
+                    <span>{counts.get(code)}</span>
+                  </span>
+                );
+              }
               return (
                 <button
                   key={code}
@@ -219,86 +248,99 @@ export function PostCard({
               );
             });
           })()}
-          <div className="relative" ref={pickerRef}>
-            <button
-              onClick={() => setPickerOpen((v) => !v)}
-              className="grid h-[30px] w-[30px] place-items-center rounded-full border-2 border-ink bg-background shadow-chunky-sm transition hover:-translate-y-0.5 hover:bg-muted"
-              title="Добавить реакцию"
-              aria-label="Добавить реакцию"
-            >
-              <SmilePlus className="h-4 w-4" />
-            </button>
-            {pickerOpen && (
-              <div className="absolute bottom-full left-0 z-20 mb-2 w-64 rounded-2xl border-2 border-ink bg-card p-3 shadow-chunky-sm">
-                <p className="mb-2 text-xs font-bold text-muted-foreground">Одобренные реакции</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {chatReactions && chatReactions.length > 0 ? (
-                    chatReactions.map((r) => (
+          {/* Reaction picker — hidden in read-only mode */}
+          {!isReadOnly && (
+            <div className="relative" ref={pickerRef}>
+              <button
+                onClick={() => setPickerOpen((v) => !v)}
+                className="grid h-[30px] w-[30px] place-items-center rounded-full border-2 border-ink bg-background shadow-chunky-sm transition hover:-translate-y-0.5 hover:bg-muted"
+                title="Добавить реакцию"
+                aria-label="Добавить реакцию"
+              >
+                <SmilePlus className="h-4 w-4" />
+              </button>
+              {pickerOpen && (
+                <div className="absolute bottom-full left-0 z-20 mb-2 w-64 rounded-2xl border-2 border-ink bg-card p-3 shadow-chunky-sm">
+                  <p className="mb-2 text-xs font-bold text-muted-foreground">Одобренные реакции</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {chatReactions && chatReactions.length > 0 ? (
+                      chatReactions.map((r) => (
+                        <button
+                          key={r.id}
+                          title={r.name}
+                          onClick={() => {
+                            toggleReaction(r.name);
+                            setPickerOpen(false);
+                          }}
+                          className="grid h-9 w-9 place-items-center rounded-xl border-2 border-ink bg-background transition hover:-translate-y-0.5 hover:bg-muted"
+                        >
+                          {r.imageSignedUrl ? (
+                            <img
+                              src={r.imageSignedUrl}
+                              alt={r.name}
+                              className="h-6 w-6 object-contain"
+                            />
+                          ) : (
+                            <span className="text-lg">{r.emoji_fallback ?? "⭐"}</span>
+                          )}
+                        </button>
+                      ))
+                    ) : (
+                      <p className="text-xs text-muted-foreground">Пока пусто</p>
+                    )}
+                  </div>
+                  <div className="mt-3 h-px bg-border" />
+                  <p className="mt-3 mb-2 text-xs font-bold text-muted-foreground">Базовые</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {STATIC_REACTIONS.map((r) => (
                       <button
-                        key={r.id}
-                        title={r.name}
+                        key={r.code}
+                        title={r.label}
                         onClick={() => {
-                          toggleReaction(r.name);
+                          toggleReaction(r.code);
                           setPickerOpen(false);
                         }}
-                        className="grid h-9 w-9 place-items-center rounded-xl border-2 border-ink bg-background transition hover:-translate-y-0.5 hover:bg-muted"
+                        className="grid h-9 w-9 place-items-center rounded-xl border-2 border-ink bg-background text-lg transition hover:-translate-y-0.5 hover:bg-muted"
                       >
-                        {r.imageSignedUrl ? (
-                          <img
-                            src={r.imageSignedUrl}
-                            alt={r.name}
-                            className="h-6 w-6 object-contain"
-                          />
-                        ) : (
-                          <span className="text-lg">{r.emoji_fallback ?? "⭐"}</span>
-                        )}
+                        {r.emoji}
                       </button>
-                    ))
-                  ) : (
-                    <p className="text-xs text-muted-foreground">Пока пусто</p>
-                  )}
+                    ))}
+                  </div>
+                  <Link
+                    to="/propose-reaction"
+                    onClick={() => setPickerOpen(false)}
+                    className="mt-3 block rounded-xl border-2 border-ink bg-background px-3 py-2 text-center text-xs font-bold shadow-chunky-sm hover:bg-muted"
+                  >
+                    + Предложить новую реакцию
+                  </Link>
                 </div>
-                <div className="mt-3 h-px bg-border" />
-                <p className="mt-3 mb-2 text-xs font-bold text-muted-foreground">Базовые</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {STATIC_REACTIONS.map((r) => (
-                    <button
-                      key={r.code}
-                      title={r.label}
-                      onClick={() => {
-                        toggleReaction(r.code);
-                        setPickerOpen(false);
-                      }}
-                      className="grid h-9 w-9 place-items-center rounded-xl border-2 border-ink bg-background text-lg transition hover:-translate-y-0.5 hover:bg-muted"
-                    >
-                      {r.emoji}
-                    </button>
-                  ))}
-                </div>
-                <Link
-                  to="/propose-reaction"
-                  onClick={() => setPickerOpen(false)}
-                  className="mt-3 block rounded-xl border-2 border-ink bg-background px-3 py-2 text-center text-xs font-bold shadow-chunky-sm hover:bg-muted"
-                >
-                  + Предложить новую реакцию
-                </Link>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
         <div className="flex items-center gap-3">
           <Link
-            to="/post/$id"
-            params={{ id: post.id }}
+            {...(isReadOnly
+              ? { to: "/auth" as const, params: {} as Record<string, never> }
+              : { to: "/post/$id" as const, params: { id: post.id } as Record<string, string> })}
             className="text-sm font-bold text-muted-foreground hover:text-primary"
           >
             💬 {commentsCount}
           </Link>
-          <ReportButton targetType="post" targetId={post.id} label="" />
+          {!isReadOnly && <ReportButton targetType="post" targetId={post.id} label="" />}
         </div>
       </footer>
 
-      {showComments === false && commentsCount > 0 && (
+      {isReadOnly && showComments === false && commentsCount > 0 && (
+        <Link
+          to="/auth"
+          className="mt-2 inline-block text-xs font-bold text-primary hover:underline"
+        >
+          Войдите, чтобы посмотреть комментарии →
+        </Link>
+      )}
+
+      {!isReadOnly && showComments === false && commentsCount > 0 && (
         <Link
           to="/post/$id"
           params={{ id: post.id }}

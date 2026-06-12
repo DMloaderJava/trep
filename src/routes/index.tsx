@@ -18,14 +18,6 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Треп — соцсеть для полной ерунды" },
       { property: "og:description", content: "Соцсеть для полной ерунды." },
     ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@400;500;700&display=swap",
-      },
-    ],
   }),
   component: Index,
 });
@@ -63,7 +55,7 @@ function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-30 border-b-2 border-ink bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">

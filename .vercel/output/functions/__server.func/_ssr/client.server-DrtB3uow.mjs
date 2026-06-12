@@ -1,4 +1,4 @@
-import { T as TSS_SERVER_FUNCTION } from "./server-TPS-gfXU.mjs";
+import { T as TSS_SERVER_FUNCTION } from "./server-DUgvIOtj.mjs";
 import { c as createClient } from "../_libs/supabase__supabase-js.mjs";
 var createServerRpc = (serverFnMeta, splitImportFn) => {
   const url = "/_serverFn/" + serverFnMeta.id;
