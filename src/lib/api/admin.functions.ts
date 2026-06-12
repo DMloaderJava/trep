@@ -183,7 +183,7 @@ async function logAdminAction(
 // ---- Server Functions ----
 
 export const adminApproveProposal = createServerFn({ method: "POST" })
-  .validator(approveProposalSchema.and(csrfTokenSchema))
+  .inputValidator(approveProposalSchema.and(csrfTokenSchema))
   .handler(async ({ data }) => {
     const adminId = await verifyAdmin(data.csrf_token);
 
@@ -228,7 +228,7 @@ export const adminApproveProposal = createServerFn({ method: "POST" })
   });
 
 export const adminRejectProposal = createServerFn({ method: "POST" })
-  .validator(rejectProposalSchema.and(csrfTokenSchema))
+  .inputValidator(rejectProposalSchema.and(csrfTokenSchema))
   .handler(async ({ data }) => {
     const adminId = await verifyAdmin(data.csrf_token);
 
@@ -253,7 +253,7 @@ export const adminRejectProposal = createServerFn({ method: "POST" })
   });
 
 export const adminResolveReport = createServerFn({ method: "POST" })
-  .validator(resolveReportSchema.and(csrfTokenSchema))
+  .inputValidator(resolveReportSchema.and(csrfTokenSchema))
   .handler(async ({ data }) => {
     const adminId = await verifyAdmin(data.csrf_token);
 
@@ -282,7 +282,7 @@ export const adminResolveReport = createServerFn({ method: "POST" })
   });
 
 export const adminHideTarget = createServerFn({ method: "POST" })
-  .validator(hideTargetSchema.and(csrfTokenSchema))
+  .inputValidator(hideTargetSchema.and(csrfTokenSchema))
   .handler(async ({ data }) => {
     const adminId = await verifyAdmin(data.csrf_token);
 
@@ -333,7 +333,7 @@ export const adminHideTarget = createServerFn({ method: "POST" })
   });
 
 export const adminTogglePostVisibility = createServerFn({ method: "POST" })
-  .validator(togglePostVisibilitySchema.and(csrfTokenSchema))
+  .inputValidator(togglePostVisibilitySchema.and(csrfTokenSchema))
   .handler(async ({ data }) => {
     const adminId = await verifyAdmin(data.csrf_token);
 
@@ -355,7 +355,7 @@ export const adminTogglePostVisibility = createServerFn({ method: "POST" })
   });
 
 export const adminDeletePost = createServerFn({ method: "POST" })
-  .validator(deletePostSchema.and(csrfTokenSchema))
+  .inputValidator(deletePostSchema.and(csrfTokenSchema))
   .handler(async ({ data }) => {
     const adminId = await verifyAdmin(data.csrf_token);
 
@@ -371,7 +371,7 @@ export const adminDeletePost = createServerFn({ method: "POST" })
   });
 
 export const adminToggleUserBlock = createServerFn({ method: "POST" })
-  .validator(toggleUserBlockSchema.and(csrfTokenSchema))
+  .inputValidator(toggleUserBlockSchema.and(csrfTokenSchema))
   .handler(async ({ data }) => {
     const adminId = await verifyAdmin(data.csrf_token);
 
@@ -404,7 +404,7 @@ export const adminToggleUserBlock = createServerFn({ method: "POST" })
  * Prevents ILIKE injection through special characters (% _ \).
  */
 export const adminSearchUsers = createServerFn({ method: "GET" })
-  .validator(searchUsersSchema.and(csrfTokenSchema))
+  .inputValidator(searchUsersSchema.and(csrfTokenSchema))
   .handler(async ({ data }) => {
     await verifyAdmin(data.csrf_token);
 
