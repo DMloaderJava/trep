@@ -513,21 +513,21 @@ function UsersTab({ csrfToken }: { csrfToken: string | null }) {
   const [q, setQ] = useState("");
   const { data: users } = useQuery({
     queryKey: ["admin-users", q],
-    queryFn: async () => {
+    queryFn: async (): Promise<UserRow[]> => {
       const term = q.trim();
       if (term.length > 0) {
         // Use server-side safe search to prevent ILIKE injection
         const result = await adminSearchUsers({
           data: { query: term, csrf_token: csrfToken ?? "" },
         });
-        return result.data ?? [];
+        return (result.data ?? []) as UserRow[];
       }
       const { data } = await supabase
         .from("profiles")
         .select("id,nickname,display_name,is_blocked,is_private")
         .order("created_at", { ascending: false })
         .limit(50);
-      return data ?? [];
+      return (data ?? []) as UserRow[];
     },
   });
 
